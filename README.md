@@ -19,17 +19,14 @@
 
 ### Run with docker
 
-This project is dockerized and uses docker-compose as an orchestrator:
+You must have Docker installed, and you must be run at the root of the project. This project is dockerized and uses
+docker-compose as an orchestrator:
 
 ```
-docker-compose up
+source build_docker_compose.sh
 ```
 
 ## Usage
-
-```sh
-Command to run Docker. You must have Docker installed and I must be run at the root of the project.
-```
 
 To get into the frontend you will be able to do it with http://0.0.0.0:8080/
 
