@@ -14,6 +14,12 @@ services:
     ports:
       - "0.0.0.0:5432:5432"
 
+  redis:
+    image: redis:alpine
+    container_name: the-eye-redis
+    ports:
+      - "6379:6379"
+
   backend:
     build:
       context: backend
@@ -28,6 +34,26 @@ services:
       - .env
     depends_on:
       - db
+      - redis
+
+  celery:
+    restart: always
+    build:
+      context: backend
+    command: celery -A backend worker -l INFO
+    volumes:
+      - $PWD/backend:/usr/src/app
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=db
+      - DB_NAME=${SQL_DATABASE}
+      - DB_USER=${SQL_USER}
+      - DB_PASS=${SQL_PASSWORD}
+    depends_on:
+      - db
+      - redis
+      - backend
 
   frontend:
     build:
