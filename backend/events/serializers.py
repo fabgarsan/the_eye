@@ -7,4 +7,4 @@ class EventSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Event
-        fields = ['session_id', 'category', 'name', 'data', 'timestamp']
+        fields = ['id', 'session_id', 'category', 'name', 'data', 'timestamp']
