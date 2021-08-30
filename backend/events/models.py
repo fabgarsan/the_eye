@@ -10,6 +10,7 @@ class Application(models.Model):
 
 
 class Session(models.Model):
+    id = models.CharField(max_length=300, primary_key=True)
     application = models.ForeignKey(Application, related_name='sessions', on_delete=models.PROTECT)
 
 
