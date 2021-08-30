@@ -1,8 +1,10 @@
 from rest_framework import serializers
-from .models import Event
+from .models import Event, Session, Application
 
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
+    session_id = serializers.CharField()
+
     class Meta:
         model = Event
-        fields = ['session', 'category', 'name', 'data', 'timestamp']
+        fields = ['session_id', 'category', 'name', 'data', 'timestamp']
