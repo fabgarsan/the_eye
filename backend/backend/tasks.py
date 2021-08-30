@@ -1,3 +1,5 @@
+from django.core.mail import EmailMessage
+
 from .celery import app
 
 from events.models import Application, Session, Event
@@ -14,3 +16,17 @@ def save_event(data):
             session, created = Session.objects.get_or_create(pk=session_id, application=application)
             data['session'] = session
             Event.objects.create(**data)
+        else:
+            send_email_save_event_error.delay(f'The host {host} is not in the list of allowed hosts')
+    else:
+        send_email_save_event_error.delay('No host has been set in the request')
+
+
+@app.task
+def send_email_save_event_error(body_message):
+    email = EmailMessage(
+        subject='Error saving and event!',
+        body=body_message,
+        to=['reporting.error@theeye.com']
+    )
+    email.send()
