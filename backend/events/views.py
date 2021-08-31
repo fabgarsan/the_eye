@@ -30,6 +30,7 @@ class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     filter_backends = (DjangoFilterBackend,)
     filterset_class = EventFilter
+    http_method_names = ['get', 'post', 'head']
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
