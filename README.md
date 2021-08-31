@@ -21,6 +21,8 @@
 
 ### Run with docker
 
+**Be sure you are created the .env file in the root of the project. You could use .env_sample as a template.**
+
 You must have Docker installed, and you must run at the root of the project the following command.
 
 ```
