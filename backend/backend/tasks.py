@@ -11,6 +11,8 @@ def save_event(data):
     host = data_body.get('host', None)
     if host:
         application = Application.objects.filter(url__icontains=host).first()
+        if not application and 'www.consumeraffairs.com' in host:
+            application = Application.objects.create(name='Consumer Affairs', url='www.consumeraffairs.com')
         if application:
             session_id = data.get('session_id')
             session, created = Session.objects.get_or_create(pk=session_id, application=application)
