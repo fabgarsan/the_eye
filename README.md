@@ -21,12 +21,13 @@
 
 ### Run with docker
 
-You must have Docker installed, and you must be run at the root of the project. This project is dockerized and uses
-docker-compose as an orchestrator:
+You must have Docker installed, and you must run at the root of the project the following command.
 
 ```
 docker-compose up
 ```
+
+This project is dockerized and uses docker-compose as an orchestrator.
 
 ## Usage
 
@@ -36,7 +37,7 @@ You will be able to access to the admin panel in http://0.0.0.0:8000/admin
 
 #### Default User
 
-Admin
+admin
 
 #### Default Password
 
@@ -110,7 +111,7 @@ In addition, The Eye will silently filter each host that calls each endpoint. Si
 organization does not want to warn anybody.
 
 On the other hand, it is important to let the developers know that something happens if The Eye gets any trouble with
-the request. Hence, when an issue with the responses is found, the errors will be sent to the admins to take care of
+the request. Hence, when an issue with the responses is found, the errors will be sent by email to the admins to take care of
 them.
 
 ***
